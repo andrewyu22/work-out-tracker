@@ -87,4 +87,14 @@ function validateInputs() {
             isValid = false;
         }
     }
+
+    if (isValid) {
+        completeButton.removeAttribute("disable");
+        addButton.removeAttribute("disable");
+    } else {
+        completeButton.setAttribute("disable", true);
+        addButton.setAttribute("disable", true);
+    }
 }
+
+
