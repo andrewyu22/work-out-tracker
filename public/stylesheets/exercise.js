@@ -1,4 +1,5 @@
 const { application } = require("express");
+const { is } = require("express/lib/request");
 
 const workoutTypeSelect = document.querySelector("type");
 const cardioForm = document.querySelector(".cardio-form");
@@ -45,5 +46,39 @@ function handleWorkoutTypeChange(event) {
     } else {
         cardioForm.classList.add("d-none");
         resistanceForm.classList.add("d-none");
+    }
+
+    validateInputs();
+}
+
+function validateInputs() {
+    let isValid = true;
+
+    if (workoutType === "resistance") {
+        if (nameInput.value.trim() === "") {
+            isValid = false;
+        }
+
+        if (weightInput.value.trim() === "") {
+            isValid = false;
+        }
+
+        if (setsInput.value.trim() === "") {
+            isValid = false;
+        }
+
+        if (repsInput.value.trim() === "") {
+            isValid = false;
+        }
+
+        if (resistanceDurationInput.value.trim() === "") {
+            isValid = false;
+        }
+    } else if (workoutType === "cardio") {
+        if (cardioNameInput.value.trim() === "") {
+            isValid = false;
+        }
+
+        
     }
 }
