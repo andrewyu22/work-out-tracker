@@ -79,6 +79,12 @@ function validateInputs() {
             isValid = false;
         }
 
-        
+        if (durationInput.value.trim() === "") {
+            isValid = false;
+        }
+
+        if (distanceInput.value.trim() === "") {
+            isValid = false;
+        }
     }
 }
