@@ -116,5 +116,16 @@ async function handleFormSubmit (event) {
         workoutData.duration =  Number(resistanceDurationInput.value.trim());
     }
 
-    
+    await application.addExercise(workoutData);
+    clearInputs();
+    toast.classList.add("success");
 }
+
+function handleToastAnimationEnd() {
+    toast.removeAttribute("class");
+    if (shouldNavigateAway) {
+        location.href = "/";
+    }
+}
+
+
