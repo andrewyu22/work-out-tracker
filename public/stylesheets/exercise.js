@@ -139,3 +139,20 @@ function clearInputs() {
     weightInput.value = "";
 }
 
+if (workoutTypeSelect) {
+    workoutTypeSelect.addEventListener("change", handleWorkoutTypeChange);
+}
+if (completeButton) {
+    completeButton.addEventListener("click", function (event) {
+        shouldNavigateAway = true;
+        handleFormSubmit(event);
+    });
+}
+if (addButton) {
+    addButton.addEventListener("click", handleFormSubmit);
+}
+toast.addEventListener("animationed", handleToastAnimationEnd);
+
+document
+.querySelectorAll("input")
+.forEach(element => element.addEventListener("input", validateInputs));
