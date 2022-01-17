@@ -55,6 +55,9 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     // expects { email: 'email@gmail.com', password: 'password1234'}
     User.create({
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
+            username: req.body.username,
             email: req.body.email,
             password: req.body.password
         })
@@ -90,12 +93,12 @@ router.post('/login', (req, res) => {
             res.status(400).json({ message: 'Incorrect password!' });
             return;
         }
-
+        
         req.session.save(() => {
             req.session.user_id = dbUserData.id;
-            req.session.email = dbUserData.email;
+            req.session.first_name = dbUserData.first_name;
+            req.session.last_name = dbUserData.last_name;
             req.session.loggedIn = true;
-
             res.json({ user: dbUserData, message: 'You are now logged in!' });
         });
     });
