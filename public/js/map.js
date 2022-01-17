@@ -1,8 +1,11 @@
 // require('dotenv').config();
 let gymLocation = [];
 let searchArea = {};
+
 function yelpApi() {
-   var apiUrl = 'https://uatapi.smartechc.com/api/test/yelpsearch?term=gym&radius=1000&location=10031&open_now=false&limit=10'; //change limit to 10 , change location to geo.location of user , change search field to gyms 
+   var location = document.getElementById('locationInput').value;
+
+   var apiUrl = 'https://uatapi.smartechc.com/api/test/yelpsearch?term=gym&radius=1000&location=' + location + '&open_now=false&limit=10'; //change limit to 10 , change location to geo.location of user , change search field to gyms 
    fetch(apiUrl, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json'}
@@ -49,6 +52,3 @@ function initMap() {
     }
 
 };
-
-
-yelpApi();
