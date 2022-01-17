@@ -87,25 +87,3 @@ function initMap() {
 
 
 // yelpApi();
-
- // map = new google.maps.Map(document.getElementById("map"), {zoom: 10, center: {
-    //     lat: 73.9507,
-    //     lng:40.8270
-    // }});
-    // var  infoWindow = new google.maps.InfoWindow({});
-
-    // var marker, count;
-    
-    // for (count = 0; count < gymLocation.length; count++) {
-    // marker = new google.maps.Marker({
-    //   position: new google.maps.LatLng(gymLocation[count].lat, gymLocation[count].long),
-    //   map: map,
-    //   title: gymLocation[count].name
-    // }); 
-    // google.maps.event.addListener(marker, 'click', (function (marker, count) {
-    //     return function () {
-    //       infoWindow.setContent(locations[count][0]);
-    //       infoWindow.open(map, marker);
-    //     }
-    //   })(marker, count));
-    // }
