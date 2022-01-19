@@ -37,13 +37,13 @@ body {
     background-color: transparent;
 }
 
-.btn {
+.map-btn {
     width: 97px;
     border: 2px solid grey;
     background-color: transparent;
 }
 
-.btn:hover {
+.map-btn:hover {
     background-color: tan;
 }
 
