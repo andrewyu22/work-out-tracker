@@ -31,26 +31,30 @@ router.get('/workout', (req, res) => {
     res.render('workout', { loggedIn: req.session.loggedIn });
 });
 
-router.post('/exercise', withAuth, (req, res) => {
+router.get('/exercise/:date', withAuth, (req, res) => {
     //get all exercise basis off user & date
     Exercise.findAll({
             where: {
                 user_id: req.session.user_id,
-                date: req.body.date
+                date: req.params.date
             }
         })
         .then(dbData => {
-            const activity = dbData.map(data => data.get({ plain: true }));
-            res.render('workout', {
-                activity,
-                loggedIn: true
-            });
+            // const activity = dbData.map(data => data.get({ plain: true }));
+            // const check = activity.length > 0 ? true : false;
+            // console.log(activity);
+            // res.render('workout', {
+            //     date: req.params.date,
+            //     activity,
+            //     check,
+            //     loggedIn: true
+            // });
+            return res.json(dbData);
         })
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
         });
 })
-
 
 module.exports = router;

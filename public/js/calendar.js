@@ -1,5 +1,6 @@
 let calendar = document.querySelector('.calendar');
-let container = document.querySelector('#date');
+let activity = document.querySelector('#activity');
+
 const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 isLeapYear = (year) => {
@@ -97,21 +98,22 @@ getDate = async(e) => {
     var year = $('#year').text().trim();
     var fullDate = new Date(year, month, date);
     var selectDate = moment(fullDate).format('YYYY-MM-DD');
-    $('#selectDate').text(selectDate);
-    if (selectDate) {
-        const response = await fetch('/exercise', {
-            method: 'POST',
-            body: JSON.stringify({
-                date: selectDate
-            }),
-            headers: { 'Content-Type': 'application/json' }
-        });
-        // if (response.ok) {
-        //     console.log(response);
-        // } else {
-        //     alert(response.statusText);
-        // }
-    }
+    // $('#selectDate').text(selectDate);
+    getExercise(selectDate);
+}
+
+function getExercise(date) {
+    fetch(`/exercise/${date}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+    }).then(responses => {
+        if (responses.ok) {
+            responses.json()
+                .then(data => {
+                    console.log(data);
+                })
+        }
+    });
 }
 
 $(document).on('click', '.calendar-day-hover', getDate);
