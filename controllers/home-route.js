@@ -2,7 +2,7 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 
 router.get('/', (req, res) => {
-    res.render('homepage', {loggedIn: req.session.loggedIn});
+    res.render('homepage', { loggedIn: req.session.loggedIn });
 })
 
 router.get('/login', (req, res) => {
@@ -18,11 +18,15 @@ router.get('/signup', (req, res) => {
 })
 
 router.get('/about', (req, res) => {
-    res.render('about', {loggedIn: req.session.loggedIn});
+    res.render('about', { loggedIn: req.session.loggedIn });
 })
 
 router.get('/gym', (req, res) => {
-    res.render('nearbygym', {loggedIn: req.session.loggedIn});
+    res.render('nearbygym', { loggedIn: req.session.loggedIn });
+})
+
+router.get('/workout', (req, res) => {
+    res.render('workout', { loggedIn: req.session.loggedIn });
 })
 
 module.exports = router;
