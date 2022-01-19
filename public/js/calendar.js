@@ -97,10 +97,8 @@ getDate = async(e) => {
     var year = $('#year').text().trim();
     var fullDate = new Date(year, month, date);
     var selectDate = moment(fullDate).format('YYYY-MM-DD');
-    console.log(selectDate);
     $('#selectDate').text(selectDate);
     if (selectDate) {
-        console.log("IN THIS FUNCTION;");
         const response = await fetch('/exercise', {
             method: 'POST',
             body: JSON.stringify({
