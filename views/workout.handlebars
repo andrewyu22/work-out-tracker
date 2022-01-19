@@ -57,7 +57,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Exercise Type</label>
-                    <select class="form-select" name="exercise-type">
+                    <select id="exercise-type" class="form-select" name="exercise-type">
                         <option disabled>Select Category</option>
                         <option value="Carido">Carido</option>
                         <option value="Resistance">Resistance</option>
@@ -71,7 +71,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Add Activity</button>
+            <button type="submit" class="btn btn-primary" onclick="addExercise()">Add Activity</button>
         </div>
         </div>
     </div>

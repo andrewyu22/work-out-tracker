@@ -123,7 +123,12 @@ function renderActivity(data, date) {
     // let data = [{ name: 'Running', type: 'Carido', duration: 90 }, { name: 'Bench Press', type: 'Resistance', duration: 60 }]
     activity.innerHTML = "";
     var dateEl = document.createElement('h1');
-    dateEl.innerHTML = "Date: <span>" + moment(date).format("MMMM Do, YYYY") + "</span>";
+    dateEl.innerHTML = "Date: ";
+    var spanEl = document.createElement('span');
+    spanEl.id = 'selectdate';
+    spanEl.setAttribute('data-date', date);
+    spanEl.textContent = moment(date).format("MMMM Do, YYYY");
+    dateEl.append(spanEl);
     var activityEl = document.createElement('h1');
     activityEl.textContent = "Exercise";
     activity.append(dateEl, activityEl);
@@ -150,6 +155,32 @@ function renderActivity(data, date) {
     addButtonEl.setAttribute("data-bs-target", "#modal-trigger")
     addButtonEl.textContent = "Add Exercise"
     activity.append(tableEl, addButtonEl);
+}
+
+async function addExercise() {
+    const name = document.querySelector('#exercise-name').value.trim();
+    const type = document.querySelector('#exercise-type').value.trim();
+    const duration = document.querySelector('#duration').value.trim();
+    let date = $('#selectdate').attr('data-date');
+    if (name && type && duration && date) {
+        const response = await fetch('/api/exercise', {
+            method: 'POST',
+            body: JSON.stringify({
+                name,
+                type,
+                duration,
+                date
+            }),
+            headers: { 'Content-Type': 'application/json' }
+        })
+
+        if (response.ok) {
+            $('#modal-trigger').modal('hide');
+            getExercise(date);
+        } else {
+            alert(response.statusText);
+        }
+    }
 }
 
 $(document).on('click', '.calendar-day-hover', getDate);
