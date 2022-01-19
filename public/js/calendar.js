@@ -143,7 +143,13 @@ function renderActivity(data, date) {
         tbodyEl.append(trEl);
     }
     tableEl.append(tbodyEl);
-    activity.append(tableEl);
+    var addButtonEl = document.createElement('button');
+    addButtonEl.type = 'button';
+    addButtonEl.className = "btn btn-primary align-self-end";
+    addButtonEl.setAttribute("data-bs-toggle", "modal");
+    addButtonEl.setAttribute("data-bs-target", "#modal-trigger")
+    addButtonEl.textContent = "Add Exercise"
+    activity.append(tableEl, addButtonEl);
 }
 
 $(document).on('click', '.calendar-day-hover', getDate);
