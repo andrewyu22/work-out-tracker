@@ -37,6 +37,7 @@ body {
   font-size: unset;
   height: 3.5rem;
 }
+/* HOME PAGE CSS */
 .the-inner {
   background-color: rgba(256, 256, 256, 0.8);
   width: 100vw;
@@ -61,6 +62,7 @@ body {
   padding: 0 1rem 0 0;
 }
 
+/* ABOUT US CSS */
 .wrapper{
   min-height: 100vh;
   width: 100%;

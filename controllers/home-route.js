@@ -18,11 +18,7 @@ router.get('/signup', (req, res) => {
 })
 
 router.get('/about', (req, res) => {
-    if(req.session.loggedIn) {
-        res.render('about', {loggedIn: req.session.loggedIn});
-        return;
-    }
-    res.render('login');
+    res.render('about', {loggedIn: req.session.loggedIn});
 })
 
 module.exports = router;
