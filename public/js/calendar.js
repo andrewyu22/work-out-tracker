@@ -110,9 +110,10 @@ function getExercise(date) {
         if (responses.ok) {
             responses.json()
                 .then(data => {
-                    console.log(data);
                     renderActivity(data, date);
                 })
+        } else {
+            alert("Error: " + responses.statusText);
         }
     });
 }
@@ -122,17 +123,27 @@ function renderActivity(data, date) {
     // let data = [{ name: 'Running', type: 'Carido', duration: 90 }, { name: 'Bench Press', type: 'Resistance', duration: 60 }]
     activity.innerHTML = "";
     var dateEl = document.createElement('h1');
-    dateEl.innerHTML = "<span>" + date + "</span>";
-    activity.append(dateEl);
+    dateEl.innerHTML = "Date: <span>" + moment(date).format("MMMM Do, YYYY") + "</span>";
+    var activityEl = document.createElement('h1');
+    activityEl.textContent = "Exercise";
+    activity.append(dateEl, activityEl);
+    var tableEl = document.createElement('table');
+    tableEl.className = "table table-secondary table-hover table-bordered"
+    tableEl.innerHTML = "<thead> <tr> <th scope='col'>Name</th> <th scope='col'>Type</th> <th scope='col'>duration</th> </thead>";
+    var tbodyEl = document.createElement('tbody');
     for (x in data) {
-        var exerciseNameEl = document.createElement('h2');
+        var trEl = document.createElement('tr');
+        var exerciseNameEl = document.createElement('td');
         exerciseNameEl.textContent = data[x].name;
-        var exerciseTypeEl = document.createElement('h2');
+        var exerciseTypeEl = document.createElement('td');
         exerciseTypeEl.textContent = data[x].type;
-        var duration = document.createElement('h2');
+        var duration = document.createElement('td');
         duration.textContent = data[x].duration;
-        activity.append(exerciseNameEl, exerciseTypeEl, duration);
+        trEl.append(exerciseNameEl, exerciseTypeEl, duration);
+        tbodyEl.append(trEl);
     }
+    tableEl.append(tbodyEl);
+    activity.append(tableEl);
 }
 
 $(document).on('click', '.calendar-day-hover', getDate);
