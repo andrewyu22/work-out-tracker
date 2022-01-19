@@ -29,7 +29,8 @@
     --color-txt: var(--light-text);
 }
 
-* {
+
+/* * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -41,7 +42,7 @@ body {
     display: grid;
     place-items: center;
     font-family: var(--font-family);
-}
+} */
 
 .calendar {
     height: max-content;
