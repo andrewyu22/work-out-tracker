@@ -36,8 +36,10 @@ router.post('/exercise', withAuth, (req, res) => {
         })
         .then(dbData => {
             const activity = dbData.map(data => data.get({ plain: true }));
+            const check = activity.length > 0 ? true : false;
             res.render('workout', {
                 activity,
+                check,
                 loggedIn: true
             });
         })

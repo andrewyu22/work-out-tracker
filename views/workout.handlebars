@@ -36,14 +36,14 @@
     </div>
 
     <div>
-        <span id="selectDate"></span>
-        {{#if activity.length}}
+        <h1><span id="selectDate"></span></h1>
+        {{log check}}
+        {{#if check}}
+        <p>HI NICE TO MEET YOU!</p>
+        {{else}}
         <ol>
-            {{#each activity as |task|}}
-            <l1>
-                {{> workout-post task}}
-            </l1>
-            {{/each}}
+            <li>TESTING</li>
+            <p>{{log activity}}</p>
         </ol>
         {{/if}}
         <button id="create-task" class="btn btn-block btn-add text-primary" data-toggle="modal" data-target="#task-form-modal">Add Task</button>
@@ -51,3 +51,4 @@
 </div>
 <script src="/js/calendar.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
