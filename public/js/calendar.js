@@ -90,3 +90,30 @@ dark_mode_toggle.onclick = () => {
     document.querySelector('body').classList.toggle('light')
     document.querySelector('body').classList.toggle('dark')
 }
+
+getDate = async(e) => {
+    var date = $(e.target).text().trim();
+    var month = month_names.indexOf($('#month-picker').text().trim());
+    var year = $('#year').text().trim();
+    var fullDate = new Date(year, month, date);
+    var selectDate = moment(fullDate).format('YYYY-MM-DD');
+    console.log(selectDate);
+    $('#selectDate').text(selectDate);
+    if (selectDate) {
+        console.log("IN THIS FUNCTION;");
+        const response = await fetch('/exercise', {
+            method: 'POST',
+            body: JSON.stringify({
+                date: selectDate
+            }),
+            headers: { 'Content-Type': 'application/json' }
+        });
+        // if (response.ok) {
+        //     console.log(response);
+        // } else {
+        //     alert(response.statusText);
+        // }
+    }
+}
+
+$(document).on('click', '.calendar-day-hover', getDate);
