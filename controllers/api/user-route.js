@@ -99,8 +99,10 @@ router.post('/login', (req, res) => {
             req.session.first_name = dbUserData.first_name;
             req.session.last_name = dbUserData.last_name;
             req.session.loggedIn = true;
+            console.log(req.session.loggedIn);
             res.json({ user: dbUserData, message: 'You are now logged in!' });
         });
+        console.log(req.session);
     });
 });
 
