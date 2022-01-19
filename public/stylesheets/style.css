@@ -1,247 +1,279 @@
 * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
+
 body {
-  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  background-color: rgb(0, 0, 0);
-  color: #b3b3b3;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    background-color: rgb(0, 0, 0);
+    color: #b3b3b3;
 }
+
+
 /* GOOGLE MAP CSS */
+
 #map {
-  height: 400px;
-  width: 600px;
-  background-color: grey;
-  margin-left: auto;
-  margin-right: auto;
-  border: 2px solid grey ;
+    height: 400px;
+    width: 600px;
+    background-color: grey;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid grey;
 }
 
 .search {
-  text-align: center;
+    text-align: center;
 }
 
 .text-area {
-  width: 95px;
-  border:2px solid grey;
-  margin-top: 20px;
-  background-color: grey;
+    width: 95px;
+    border: 2px solid grey;
+    margin-top: 20px;
+    background-color: grey;
 }
 
-.text-area:hover{
-  background-color:transparent;
+.text-area:hover {
+    background-color: transparent;
 }
 
-.btn {
-  width: 97px;
-  border:2px solid grey;
-  background-color: transparent;
+.map-btn {
+    width: 97px;
+    border: 2px solid grey;
+    background-color: transparent;
 }
-.btn:hover{
-  background-color: tan;
+
+.map-btn:hover {
+    background-color: tan;
 }
 
 .bg {
-  /* The image used */
-  background-image: url(/public/image/workout-map.jpeg);
-
-  /* Full height */
-  height: 100%;
-
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
+    /* The image used */
+    background-image: url(/public/image/workout-map.jpeg);
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
+
+
 /* Color of the links BEFORE scroll */
+
 .navbar-scroll .nav-link,
 .navbar-scroll .navbar-toggler-icon,
 .navbar-scroll .navbar-brand {
-  color: #262626;
+    color: #262626;
 }
+
+
 /* Color of the navbar BEFORE scroll */
+
 .navbar-scroll {
-  background-color: #FFC017;
+    background-color: #FFC017;
 }
+
+
 /* Color of the links AFTER scroll */
+
 .navbar-scrolled .nav-link,
 .navbar-scrolled .navbar-toggler-icon,
 .navbar-scroll .navbar-brand {
-  color: #262626;
+    color: #262626;
 }
+
+
 /* Color of the navbar AFTER scroll */
+
 .navbar-scrolled {
-  background-color: #fff;
+    background-color: #fff;
 }
+
+
 /* An optional height of the navbar AFTER scroll */
+
 .navbar.navbar-scroll.navbar-scrolled {
-  padding-top: auto;
-  padding-bottom: auto;
+    padding-top: auto;
+    padding-bottom: auto;
 }
+
 .navbar-brand {
-  font-size: unset;
-  height: 3.5rem;
+    font-size: unset;
+    height: 3.5rem;
 }
+
+
 /* HOME PAGE CSS */
+
 .the-inner {
-  background-color: rgba(256, 256, 256, 0.8);
-  width: 100vw;
-  padding: 1rem;
+    background-color: rgba(256, 256, 256, 0.8);
+    width: 100vw;
+    padding: 1rem;
 }
+
 .the-inner h1 {
-  font-size: 5vw;
-  line-height: .8;
-  color: rgb(13, 5, 46);
-  font-weight: bold;
+    font-size: 5vw;
+    line-height: .8;
+    color: rgb(13, 5, 46);
+    font-weight: bold;
 }
+
 .the-inner p {
-  color: #040429;
-  text-align: left;
-  font-size: 1.75rem;
+    color: #040429;
+    text-align: left;
+    font-size: 1.75rem;
 }
+
 .the-inner a {
-  color: #000000;
+    color: #000000;
 }
+
 .the-inner .points p:before {
-  content: url(https://chrislanejones.com/wp-content/uploads/2018/10/littlesquarebullet.png);
-  padding: 0 1rem 0 0;
+    content: url(https://chrislanejones.com/wp-content/uploads/2018/10/littlesquarebullet.png);
+    padding: 0 1rem 0 0;
 }
+
 
 /* ABOUT US CSS */
-.wrapper{
-  min-height: 100vh;
-  width: 100%;
-  background-image: url('../image/calender.jpeg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 
+.wrapper {
+    min-height: 100vh;
+    width: 100%;
+    background-image: url('../image/calender.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 .testimonial {
-  padding: 30px 100px;
-}
-.team{
-  color: tomato;
-}
-article h1 {
-  font-size: 50px;
-  font-weight: 800;
-  text-transform: uppercase;
-  color: tomato;
-}
-
-article h1::after {
-  content: "";
-  height: 5px;
-  width: 225px;
-  background-color: white ;
-  display: block;
-  margin: auto;
-}
-
-h3 {
-  color: tomato;
-}
-
-blockquote {
-  font-family: sans-serif;
-  font-size: 20px;
-  margin-top: 30px;
-  color: tomato;
-}
-
-.img1 {
-  height: 200px;
-  width: 200px;
-  border: 2px solid #fff;
-  border-radius: 50%;
-  margin-top: 60px; 
-  border-color: tomato;
-  position: relative;
-  margin: 50px;
-  background-image: url('../image/andrew.jpeg');
-  background-size: cover;
-}
-.img2{
-  height: 200px;
-  width: 200px;
-  border: 2px solid #fff;
-  border-radius: 50%;
-  margin-top: 60px; 
-  border-color: tomato;
-  position: relative;
-  margin: 50px;
-  background-image: url('../image/Fayaz.jpeg');
-  background-size: cover;
-}
-.img3 {
-  height: 200px;
-  width: 200px;
-  border: 2px solid #fff;
-  border-radius: 50%;
-  margin-top: 60px; 
-  border-color: tomato;
-  position: relative;
-  margin: 50px;
-  background-image: url('../image/john1.jpeg');
-  background-size: cover;
-}
-.img4 {
-  height: 200px;
-  width: 200px;
-  border: 2px solid #fff;
-  border-radius: 50%;
-  margin-top: 60px; 
-  border-color: tomato;
-  position: relative;
-  margin: 50px;
-  background-image: url('../image/marcio1.jpeg');
-  background-size: cover;
+    padding: 30px 100px;
 }
 
 .team {
-  width: 100%;
-  height: auto;
+    color: tomato;
+}
+
+article h1 {
+    font-size: 50px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: tomato;
+}
+
+article h1::after {
+    content: "";
+    height: 5px;
+    width: 225px;
+    background-color: white;
+    display: block;
+    margin: auto;
+}
+
+h3 {
+    color: tomato;
+}
+
+blockquote {
+    font-family: sans-serif;
+    font-size: 20px;
+    margin-top: 30px;
+    color: tomato;
+}
+
+.img1 {
+    height: 200px;
+    width: 200px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    margin-top: 60px;
+    border-color: tomato;
+    position: relative;
+    margin: 50px;
+    background-image: url('../image/andrew.jpeg');
+    background-size: cover;
+}
+
+.img2 {
+    height: 200px;
+    width: 200px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    margin-top: 60px;
+    border-color: tomato;
+    position: relative;
+    margin: 50px;
+    background-image: url('../image/Fayaz.jpeg');
+    background-size: cover;
+}
+
+.img3 {
+    height: 200px;
+    width: 200px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    margin-top: 60px;
+    border-color: tomato;
+    position: relative;
+    margin: 50px;
+    background-image: url('../image/john1.jpeg');
+    background-size: cover;
+}
+
+.img4 {
+    height: 200px;
+    width: 200px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    margin-top: 60px;
+    border-color: tomato;
+    position: relative;
+    margin: 50px;
+    background-image: url('../image/marcio1.jpeg');
+    background-size: cover;
+}
+
+.team {
+    width: 100%;
+    height: auto;
 }
 
 .teams {
-  font-size: 4rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 20px;
+    font-size: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
 }
 
 .cards {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-flow: wrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: wrap;
 }
 
 .text-container {
-  position: absolute;
-  height: 75px;
-  width: 100%;
-  z-index: 2;
-  left: 0;
-  bottom: 0%;
-  background-color: transparent;
-  overflow: hidden;
+    position: absolute;
+    height: 75px;
+    width: 100%;
+    z-index: 2;
+    left: 0;
+    bottom: 0%;
+    background-color: transparent;
+    overflow: hidden;
 }
 
 .text-container:hover {
-  height: 250px;
+    height: 250px;
 }
 
 .name {
-  margin-top: 21px;
-  font-size: 1rem;
+    margin-top: 21px;
+    font-size: 1rem;
 }
 
 .content {
-  padding: 25px 0;
+    padding: 25px 0;
 }
