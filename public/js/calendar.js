@@ -1,5 +1,5 @@
 let calendar = document.querySelector('.calendar');
-let activity = document.querySelector('#activity');
+let activity = document.querySelector('.activity');
 
 const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
@@ -111,9 +111,28 @@ function getExercise(date) {
             responses.json()
                 .then(data => {
                     console.log(data);
+                    renderActivity(data, date);
                 })
         }
     });
+}
+
+function renderActivity(data, date) {
+    // let date = "2022-01-17"
+    // let data = [{ name: 'Running', type: 'Carido', duration: 90 }, { name: 'Bench Press', type: 'Resistance', duration: 60 }]
+    activity.innerHTML = "";
+    var dateEl = document.createElement('h1');
+    dateEl.innerHTML = "<span>" + date + "</span>";
+    activity.append(dateEl);
+    for (x in data) {
+        var exerciseNameEl = document.createElement('h2');
+        exerciseNameEl.textContent = data[x].name;
+        var exerciseTypeEl = document.createElement('h2');
+        exerciseTypeEl.textContent = data[x].type;
+        var duration = document.createElement('h2');
+        duration.textContent = data[x].duration;
+        activity.append(exerciseNameEl, exerciseTypeEl, duration);
+    }
 }
 
 $(document).on('click', '.calendar-day-hover', getDate);
