@@ -39,5 +39,43 @@
     
     <div class="col activity text-center align-items-center"></div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="modal-trigger" tabindex="-1" role="dialog" aria-labelledby="modal-true" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="modal-title">New Exercise</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            </button>
+        </div>
+        <div class="modal-body">
+             <form>
+                <div class="mb-3">
+                    <label class="form-label">Exercise Name</label>
+                    <input type="text" class="form-control" id="exercise-name" name="exercise-name" placeholder="Running" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Exercise Type</label>
+                    <select id="exercise-type" class="form-select" name="exercise-type">
+                        <option disabled>Select Category</option>
+                        <option value="Carido">Carido</option>
+                        <option value="Resistance">Resistance</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Duration (Minutes)</label>
+                    <input type="number" class="form-control" id="duration" name="duration" placeholder="60" />
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" onclick="addExercise()">Add Activity</button>
+        </div>
+        </div>
+    </div>
+</div>
+
 <script src="/js/calendar.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
