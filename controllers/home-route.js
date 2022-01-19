@@ -21,4 +21,8 @@ router.get('/about', (req, res) => {
     res.render('about', {loggedIn: req.session.loggedIn});
 })
 
+router.get('/gym', (req, res) => {
+    res.render('nearbygym', {loggedIn: req.session.loggedIn});
+})
+
 module.exports = router;
