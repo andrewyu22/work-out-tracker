@@ -10,9 +10,7 @@ body {
     color: #b3b3b3;
 }
 
-
-/* GOOGLE MAP CSS */
-
+/* Beginning of Google Map CSS */
 #map {
     height: 400px;
     width: 600px;
@@ -48,52 +46,41 @@ body {
 }
 
 .bg {
-    /* The image used */
     background-image: url(/public/image/workout-map.jpeg);
-    /* Full height */
     height: 100%;
-    /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
 }
+/* End of Google Maps CSS */
 
-
+/* Beginning of Navbar CSS */
 /* Color of the links BEFORE scroll */
-
 .navbar-scroll .nav-link,
 .navbar-scroll .navbar-toggler-icon,
 .navbar-scroll .navbar-brand {
     color: #262626;
 }
 
-
 /* Color of the navbar BEFORE scroll */
-
 .navbar-scroll {
     background-color: #FFC017;
 }
 
-
 /* Color of the links AFTER scroll */
-
 .navbar-scrolled .nav-link,
 .navbar-scrolled .navbar-toggler-icon,
 .navbar-scroll .navbar-brand {
     color: #262626;
 }
 
-
 /* Color of the navbar AFTER scroll */
-
 .navbar-scrolled {
     background-color: #fff;
 }
 
-
 /* An optional height of the navbar AFTER scroll */
-
 .navbar.navbar-scroll.navbar-scrolled {
     padding-top: auto;
     padding-bottom: auto;
@@ -103,10 +90,8 @@ body {
     font-size: unset;
     height: 3.5rem;
 }
-
-
-/* HOME PAGE CSS */
-
+/* End of Navbar CSS */
+/* Beginning of Homepage CSS */
 #thehero {
     width: 100vw;
     height: 100vh;
@@ -115,7 +100,7 @@ body {
     align-items: center;
     text-align: center;
     color: #fff;
-    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(../image/hero_2.jpeg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../image/hero_2.jpeg);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -149,10 +134,8 @@ body {
     content: url(https://chrislanejones.com/wp-content/uploads/2018/10/littlesquarebullet.png);
     padding: 0 1rem 0 0;
 }
-
-
-/* ABOUT US CSS */
-
+/* End of Homepage CSS */
+/* Beginning of About Us CSS */
 .wrapper {
     min-height: 100vh;
     width: 100%;
@@ -292,3 +275,4 @@ blockquote {
 .content {
     padding: 25px 0;
 }
+/* End of About Us CSS */

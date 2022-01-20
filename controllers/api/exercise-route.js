@@ -2,7 +2,7 @@ const router = require('express').Router();
 const Exercise = require('../../models/Exercise');
 const withAuth = require('../../utils/auth');
 
-//get all users
+//Get all Exercises
 router.get('/', (req, res) => {
     Exercise.findAll()
         .then(dbData => res.json(dbData))
@@ -12,6 +12,7 @@ router.get('/', (req, res) => {
         });
 });
 
+// Create a new exercise to store into Database
 router.post('/', (req, res) => {
     // expects { user_id: 1, name: 'Running', type: 'Cardio', duration: 30, date: 2021-03-01}
     Exercise.create({
@@ -28,6 +29,7 @@ router.post('/', (req, res) => {
         });
 });
 
+// Update Exercises
 router.put('/:id', withAuth, (req, res) => {
     Exercise.update({
             name: req.body.name,
@@ -51,6 +53,7 @@ router.put('/:id', withAuth, (req, res) => {
         });
 });
 
+// Delete Exercises
 router.delete('/:id', (req, res) => {
     Exercise.destroy({
             where: {

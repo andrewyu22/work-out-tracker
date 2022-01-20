@@ -92,6 +92,7 @@ dark_mode_toggle.onclick = () => {
     document.querySelector('body').classList.toggle('dark')
 }
 
+// Allows you to click on the calendar to select the date
 getDate = async(e) => {
     var date = $(e.target).text().trim();
     var month = month_names.indexOf($('#month-picker').text().trim());
@@ -99,10 +100,13 @@ getDate = async(e) => {
     var fullDate = new Date(year, month, date);
     var selectDate = moment(fullDate).format('YYYY-MM-DD');
     // $('#selectDate').text(selectDate);
+    // call getExercise function
     getExercise(selectDate);
 }
 
+// Get all exercise related to the date and user_id
 function getExercise(date) {
+    // Call /exercise/:date the GET route to get the data from the database
     fetch(`/exercise/${date}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
@@ -110,6 +114,7 @@ function getExercise(date) {
         if (responses.ok) {
             responses.json()
                 .then(data => {
+                    // If API responses is okay, call renderActivity Function
                     renderActivity(data, date);
                 })
         } else {
@@ -117,10 +122,8 @@ function getExercise(date) {
         }
     });
 }
-
+// Render data back to workout view
 function renderActivity(data, date) {
-    // let date = "2022-01-17"
-    // let data = [{ name: 'Running', type: 'Carido', duration: 90 }, { name: 'Bench Press', type: 'Resistance', duration: 60 }]
     activity.innerHTML = "";
     var dateEl = document.createElement('h1');
     dateEl.innerHTML = "Date: ";
@@ -157,12 +160,16 @@ function renderActivity(data, date) {
     activity.append(tableEl, addButtonEl);
 }
 
+// Add Exercise to the database
 async function addExercise() {
+    // Get all data using DOM to get Exercise Name/Exercise Type/Duration & Date
     const name = document.querySelector('#exercise-name').value.trim();
     const type = document.querySelector('#exercise-type').value.trim();
     const duration = document.querySelector('#duration').value.trim();
     let date = $('#selectdate').attr('data-date');
+    // Check if they all selected data have values
     if (name && type && duration && date) {
+        // call /api/exercise/ the POST route to create a new Exercise
         const response = await fetch('/api/exercise', {
             method: 'POST',
             body: JSON.stringify({
@@ -173,11 +180,14 @@ async function addExercise() {
             }),
             headers: { 'Content-Type': 'application/json' }
         })
-
+        // if API call is ok
         if (response.ok) {
+            // Hide the Modal
             $('#modal-trigger').modal('hide');
+            // Render the data again to workout view
             getExercise(date);
         } else {
+            // Else alert error
             alert(response.statusText);
         }
     }
