@@ -1,53 +1,57 @@
 const router = require('express').Router();
-const sequelize = require('../config/connection');
-const User = require('../models/User');
 const Exercise = require('../models/Exercise');
 const withAuth = require('../utils/auth');
-const multer = require('multer');
-const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null, './public/uploads')
-    },
-    filename: function(req, file, cb) {
-        cb(null, file.originalname)
-    }
-})
-const upload = multer({ storage: storage })
 
+// Homepage Route
 router.get('/', (req, res) => {
+    // Render Homepage view and pass parameter loggedIn & Picture
     res.render('homepage', { loggedIn: req.session.loggedIn, picture: req.session.picture });
 });
 
+// LogIn Route
 router.get('/login', (req, res) => {
+    // If loggedIn session, redirect to homepage Route
     if (req.session.loggedIn) {
         res.redirect('/');
         return;
     }
+    // Else render login view
     res.render('login');
 });
 
+// Sign Up Route
 router.get('/signup', (req, res) => {
+    // Render signup View
     res.render('signup');
 });
 
+// About Route
 router.get('/about', (req, res) => {
+    // Render about view and pass parameter loggedIn & Picture
     res.render('about', { loggedIn: req.session.loggedIn, picture: req.session.picture });
 });
 
+// Near By Gym Route
 router.get('/gym', (req, res) => {
+    // Render nearbygym view and pass parameter loggedIn & Picture
     res.render('nearbygym', { loggedIn: req.session.loggedIn, picture: req.session.picture });
 });
 
+// Workout Route
 router.get('/workout', (req, res) => {
+    // Render workout view and pass parameter loggedIn & Picture
     res.render('workout', { loggedIn: req.session.loggedIn, picture: req.session.picture });
 });
 
+// Profile Route
 router.get('/profile', (req, res) => {
+    // Render profile view and pass parameter loggedIn & Picture
     res.render('profile', { loggedIn: req.session.loggedIn, picture: req.session.picture })
 });
 
+// Exercise Route - Get all activity by user & date
 router.get('/exercise/:date', withAuth, (req, res) => {
-    //get all exercise basis off user & date
+    //get all exercise bas off user & date
     Exercise.findAll({
             where: {
                 user_id: req.session.user_id,
@@ -55,33 +59,14 @@ router.get('/exercise/:date', withAuth, (req, res) => {
             }
         })
         .then(dbData => {
+            // return data responses in JSON
             return res.json(dbData);
         })
         .catch(err => {
+            // Catch Error & Log it
             console.log(err);
             res.status(500).json(err);
         });
-});
-
-router.post('/image', upload.single('image_name'), (req, res) => {
-    // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
-    User.update({
-        profilePicture: req.file.path.replace('public\\uploads\\', '')
-    }, {
-        where: {
-            id: req.session.user_id
-        }
-    }).then(dbUserData => {
-        console.log(dbUserData);
-        req.session.reload(() => {
-            req.session.user_id = dbUserData.id;
-            req.session.first_name = dbUserData.first_name;
-            req.session.last_name = dbUserData.last_name;
-            req.session.picture = dbUserData.profilePicture;
-            req.session.loggedIn = true;
-            res.json({ user: dbUserData, message: 'You are now logged in!' });
-        });
-    });
 });
 
 module.exports = router;
