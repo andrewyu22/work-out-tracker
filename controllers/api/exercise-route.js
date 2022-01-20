@@ -14,7 +14,6 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     // expects { user_id: 1, name: 'Running', type: 'Cardio', duration: 30, date: 2021-03-01}
-    console.log("IN POST EXERCISE ROUTE");
     Exercise.create({
             user_id: req.session.user_id,
             name: req.body.name,
