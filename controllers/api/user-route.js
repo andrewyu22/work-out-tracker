@@ -173,7 +173,7 @@ router.delete('/:id', (req, res) => {
 // Post image to uploads folder with multer and update Users database ProfilePicture name
 router.post('/image', upload.single('image_name'), (req, res) => {
     // expects {profilePicture: 'empty.png'}
-    let fileName = req.file.path.replace('public\\uploads\\', '');
+    let fileName = req.file.path.substring(15);
     User.update({
             // update users profilePicture name in the User's Table base off User_Id
             profilePicture: fileName
@@ -185,7 +185,7 @@ router.post('/image', upload.single('image_name'), (req, res) => {
             // reload the save session and render back to homepage with new picture
             req.session.reload(() => {
                 req.session.user_id = req.session.user_id;
-                req.session.picture = req.file.path.replace('public\\uploads\\', '');
+                req.session.picture = fileName;
                 req.session.loggedIn = true;
                 res.render('homepage', { loggedIn: req.session.loggedIn, picture: req.session.picture });
             });
