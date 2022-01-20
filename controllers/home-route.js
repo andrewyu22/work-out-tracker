@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const User = require('../models/User');
+const Exercise = require('../models/Exercise');
 const withAuth = require('../utils/auth');
 const multer = require('multer');
 const storage = multer.diskStorage({
@@ -43,22 +44,44 @@ router.get('/workout', (req, res) => {
 
 router.get('/profile', (req, res) => {
     res.render('profile', { loggedIn: req.session.loggedIn, picture: req.session.picture })
-})
+});
+
+router.get('/exercise/:date', withAuth, (req, res) => {
+    //get all exercise basis off user & date
+    Exercise.findAll({
+            where: {
+                user_id: req.session.user_id,
+                date: req.params.date
+            }
+        })
+        .then(dbData => {
+            return res.json(dbData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
 
 router.post('/image', upload.single('image_name'), (req, res) => {
     // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
-    console.log("READING PATH: ", req.file.path.replace('public\\uploads\\', ''));
-    console.log(req.body);
     User.update({
         profilePicture: req.file.path.replace('public\\uploads\\', '')
     }, {
         where: {
             id: req.session.user_id
         }
-    }).then(answer => {
-        console.log(answer);
-        res.redirect('/');
-    })
+    }).then(dbUserData => {
+        console.log(dbUserData);
+        req.session.reload(() => {
+            req.session.user_id = dbUserData.id;
+            req.session.first_name = dbUserData.first_name;
+            req.session.last_name = dbUserData.last_name;
+            req.session.picture = dbUserData.profilePicture;
+            req.session.loggedIn = true;
+            res.json({ user: dbUserData, message: 'You are now logged in!' });
+        });
+    });
 });
 
 module.exports = router;
