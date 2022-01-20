@@ -1,0 +1,24 @@
+<div class="container d-flex justify-content-center mt-5">
+    <div class="row align-items-center">
+        <div class="col-8">
+            <img src="/uploads/{{picture}}" width="25%" alt="profile" loading="lazy"/>
+        </div>
+        <div class="col-6">
+            {{!-- <form action="/image" method="POST" enctype="multipart/form-data"></form> 
+                <label class="label" for="post-image">Image</label> 
+                <div>
+                    <label>Upload Image</label>
+                    <input type="file" name="image_name" required/>
+                </div>
+                    <button class="btn btn-primary" type="submit">Upload</button>
+                </div>
+            </form> --}}
+            <form action="/image" enctype="multipart/form-data" method="post">
+                <div class="form-group">
+                    <input type="file" class="form-control-file" name="image_name">
+                    <input type="submit" class="btn btn-primary">            
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
