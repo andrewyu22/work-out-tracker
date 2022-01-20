@@ -124,6 +124,7 @@ router.post('/logout', (req, res) => {
     }
 });
 
+// Update Users information
 router.put('/:id', (req, res) => {
     // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
     // pass in req.body instead to only update what's passed through
@@ -148,6 +149,7 @@ router.put('/:id', (req, res) => {
         });
 });
 
+// Delete users by Id
 router.delete('/:id', (req, res) => {
     // Deletes the Users base off User_Id
     User.destroy({
@@ -168,11 +170,13 @@ router.delete('/:id', (req, res) => {
         });
 });
 
+// Post image to uploads folder with multer and update Users database ProfilePicture name
 router.post('/image', upload.single('image_name'), (req, res) => {
     // expects {profilePicture: 'empty.png'}
+    let fileName = req.file.path.replace('public\\uploads\\', '');
     User.update({
             // update users profilePicture name in the User's Table base off User_Id
-            profilePicture: req.file.path.replace('public\\uploads\\', '')
+            profilePicture: fileName
         }, {
             where: {
                 id: req.session.user_id
