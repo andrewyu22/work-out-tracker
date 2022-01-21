@@ -1,12 +1,23 @@
-<div class="input-greoup mb-3">
-    <div class="search" >
-        <button onclick="yelpApi()" type="button" class="btn btn-secondary">Search</button>
+<section class="workout">
+    <div class="container d-flex justify-content-center">
+        <div class="card mask-custom p-4 mt-5">
+            <div class="card-body">
+            <p class="h1 font-weight-bold mb-4 text-white text-center">Find Gyms Near You!</p>
+                <div class="row justify-content-center align-items-center text-center">
+                    <div class="col-lg-6">
+                            <div class="form-floating text-dark">
+                            <input type="text" class="form-control" id="locationInput" placeholder="Location">
+                            <label for="locationInput">Location</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <button class="btn btn-primary btn-lg" type="button" onclick="yelpApi()">Search</button>
+                    </div>
+                    <div id="map" class="col col-lg-12 col-md-6 mt-4 map"></div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="row justify-content-center">
-        <input id="locationInput" class="text-area" class="input is-primary" type="text" name="locationInput" placeholder="Zipcode" style="text-align:center"/>
-    </div>
-</div>
-<div id="map" class="map"></div>
-    
+</section>
 <script src="/js/map.js"></script>
 <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBofEj2qphNYQMAJmhTqnmDt28sjHIEDMA"></script>
