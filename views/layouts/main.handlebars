@@ -32,18 +32,18 @@
             <!-- Left links -->
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link d-flex flex-column text-center" aria-current="page" href="/"><i class="fas fa-home fa-lg"></i><span class="small">Home</span></a>
+                <a class="nav-link d-flex flex-column text-center" aria-current="page" href="/"><i class="fas fa-home fa-lg"></i><span class="mt-3 small">Home</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link d-flex flex-column text-center" aria-current="page" href="/gym"><i class="fas fa-user-friends fa-lg"></i><span class="small">Gyms Near Me</span></a>
+                <a class="nav-link d-flex flex-column text-center" aria-current="page" href="/gym"><i class="fas fa-search-location fa-lg"></i><span class="mt-3 small">Gyms Near Me</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link d-flex flex-column text-center" aria-current="page" href="/about"><i class="fas fa-comment-dots fa-lg"></i><span class="small">About Us</span></a>
+                <a class="nav-link d-flex flex-column text-center" aria-current="page" href="/about"><i class="fas fa-comment-dots fa-lg"></i><span class="mt-3 small">About Us</span></a>
               </li>
               <!-- If LoggedIn, Show these Links-->
               {{#if loggedIn}}
               <li class="nav-item">
-                <a class="nav-link d-flex flex-column text-center" aria-current="page" href="/workout"><i class="fas fa-briefcase fa-lg"></i><span class="small">My Workouts</span></a>
+                <a class="nav-link d-flex flex-column text-center" aria-current="page" href="/workout"><i class="fas fa-dumbbell fa-lg"></i><span class="mt-3 small">My Workouts</span></a>
               </li>
               <li class="nav-item dropdown d-flex flex-column text-center">
                 <a class="nav-link dropdown-toggle"
@@ -58,10 +58,10 @@
               <!-- Else, Show these links -->
               {{else}}
               <li class="nav-item">
-                <a class="nav-link d-flex flex-column text-center" aria-current="page" href="/login"><i class="fas fa-comment-dots fa-lg"></i><span class="small">Log In</span></a>
+                <a class="nav-link d-flex flex-column text-center" aria-current="page" href="/login"><i class="fas fa-sign-in-alt fa-lg"></i><span class="mt-3 small">Log In</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link d-flex flex-column text-center" aria-current="page" href="/signup"><i class="fas fa-bell fa-lg"></i><span class="small">Sign Up</span></a>
+                <a class="nav-link d-flex flex-column text-center" aria-current="page" href="/signup"><i class="fas fa-user-plus fa-lg"></i><span class="mt-3 small">Sign Up</span></a>
               </li>
               {{/if}}
             </ul>
