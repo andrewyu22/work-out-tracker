@@ -1,23 +1,15 @@
-<div class="container d-flex justify-content-center mt-5">
-    <div class="row align-items-center">
-        <div class="col-8">
-            <img src="/uploads/{{picture}}" width="25%" alt="profile" loading="lazy"/>
+<div class="container mt-5">
+    <div class="d-flex flex-column justify-content-center align-items-center text-center">
+        <div class="col">
+            <h2>Current Image</h2>
+            <img src="/uploads/{{picture}}" class="rounded-circle" height="300px" max-width="10%" alt="profile" loading="lazy"/>
         </div>
-        <div class="col-6">
-            {{!-- <form action="/image" method="POST" enctype="multipart/form-data"></form> 
-                <label class="label" for="post-image">Image</label> 
-                <div>
-                    <label>Upload Image</label>
-                    <input type="file" name="image_name" required/>
-                </div>
-                    <button class="btn btn-primary" type="submit">Upload</button>
-                </div>
-            </form> --}}
+        <div class="col">
             <form action="/api/users/image" enctype="multipart/form-data" method="post">
-                <div class="form-group">
+                <div class="form-group mt-5">
                     <input type="file" class="form-control-file" name="image_name">
-                    <input type="submit" class="btn btn-primary">            
                 </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>

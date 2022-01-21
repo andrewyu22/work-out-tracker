@@ -276,3 +276,7 @@ blockquote {
     padding: 25px 0;
 }
 /* End of About Us CSS */
+
+.avatar-pic {
+    width: 150px;
+}
