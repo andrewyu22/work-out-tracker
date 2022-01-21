@@ -2,29 +2,29 @@
 let gymLocation = [];
 let searchArea = {};
 
-function yelpApi() {
+async function yelpApi() {
    var location = document.getElementById('locationInput').value;
-
-   var apiUrl = 'https://uatapi.smartechc.com/api/test/yelpsearch?term=gym&radius=1000&location=' + location + '&open_now=false&limit=10'; //change limit to 10 , change location to geo.location of user , change search field to gyms 
-   fetch(apiUrl, {
+   const response = await fetch(`/api/map/${location}`, {
     method: 'GET',
-    headers: { 'Content-Type': 'application/json'}
-}).then(responses => responses.json()).then(data => {
-    searchArea = {
+    headers: { 'Content-Type': 'application/json' }}
+   )
+   if(response.ok) {
+     response.json().then(data => {
+      searchArea = {
         lat: data.region.center.latitude,
         long: data.region.center.longitude
-    }
-    data.businesses.forEach(business => {
+      }
+      data.businesses.forEach(business => {
         var object = {
             name: business.name,
             lat: business.coordinates.latitude,
             long: business.coordinates.longitude
         };
         gymLocation.push(object);
+      });
+      initMap();
     });
-    console.log(gymLocation);
-    initMap();
-});
+  }
 }
 
 // GOogle Map API Function
@@ -50,5 +50,4 @@ function initMap() {
         }
       })(marker, count));
     }
-
 };
