@@ -73,4 +73,24 @@ router.delete('/:id', (req, res) => {
         });
 });
 
+// Exercise Route - Get all activity by user & date
+router.get('/getExercise/:date', withAuth, (req, res) => {
+    //get all exercise bas off user & date
+    Exercise.findAll({
+            where: {
+                user_id: req.session.user_id,
+                date: req.params.date
+            }
+        })
+        .then(dbData => {
+            // return data responses in JSON
+            return res.json(dbData);
+        })
+        .catch(err => {
+            // Catch Error & Log it
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+
 module.exports = router;
