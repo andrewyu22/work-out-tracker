@@ -1,7 +1,5 @@
 const router = require('express').Router();
-const Exercise = require('../models/Exercise');
 const withAuth = require('../utils/auth');
-
 // Homepage Route
 router.get('/', (req, res) => {
     // Render Homepage view and pass parameter loggedIn & Picture
@@ -49,24 +47,5 @@ router.get('/profile', withAuth, (req, res) => {
     res.render('profile', { loggedIn: req.session.loggedIn, picture: req.session.picture })
 });
 
-// Exercise Route - Get all activity by user & date
-router.get('/exercise/:date', withAuth, (req, res) => {
-    //get all exercise bas off user & date
-    Exercise.findAll({
-            where: {
-                user_id: req.session.user_id,
-                date: req.params.date
-            }
-        })
-        .then(dbData => {
-            // return data responses in JSON
-            return res.json(dbData);
-        })
-        .catch(err => {
-            // Catch Error & Log it
-            console.log(err);
-            res.status(500).json(err);
-        });
-});
 
 module.exports = router;

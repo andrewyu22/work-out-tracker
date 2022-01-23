@@ -182,7 +182,6 @@ async function addExercise() {
     const type = document.querySelector('#exercise-type').value.trim();
     const duration = document.querySelector('#duration').value.trim();
     let date = $('#selectdate').attr('data-date');
-    console.log(name, type, duration);
     // Check if they all selected data have values
     if (name && type && duration && date) {
         // call /api/exercise/ the POST route to create a new Exercise
