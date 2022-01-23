@@ -175,7 +175,6 @@ function renderActivity(data, date) {
 async function addExercise() {
     $('#editActivity').attr('style','display:none;');
     $('#addActivity').removeAttr('style');
-    $('#modal-trigger form')[0].reset();
     // Show Modal
     $('#modal-trigger').modal('show');
     // Get all data using DOM to get Exercise Name/Exercise Type/Duration & Date
@@ -183,6 +182,7 @@ async function addExercise() {
     const type = document.querySelector('#exercise-type').value.trim();
     const duration = document.querySelector('#duration').value.trim();
     let date = $('#selectdate').attr('data-date');
+    console.log(name, type, duration);
     // Check if they all selected data have values
     if (name && type && duration && date) {
         // call /api/exercise/ the POST route to create a new Exercise
@@ -286,3 +286,6 @@ async function saveExercise() {
 $(document).on('click', '.calendar-day-hover', getDate);
 $(document).on('click', '.delete', deleteExercise);
 $(document).on('click', '.edit', editExercise);
+$('#modal-trigger').on('hidden.bs.modal', function (e) {
+    $('#modal-trigger form')[0].reset();
+})

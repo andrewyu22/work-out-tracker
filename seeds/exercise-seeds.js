@@ -11,49 +11,49 @@ const exercisedata = [{
     {
         user_id: '1',
         name: 'Bench Press',
-        type: 'Resistances',
+        type: 'Resistance',
         duration: '30',
         date: '2022-01-17'
     },
     {
         user_id: '2',
         name: 'Bench Press',
-        type: 'Resistances',
+        type: 'Resistance',
         duration: '45',
         date: '2022-01-17'
     },
     {
         user_id: '2',
         name: 'Dumbbell Curls',
-        type: 'Resistances',
+        type: 'Resistance',
         duration: '25',
         date: '2022-01-17'
     },
     {
         user_id: '2',
         name: 'Hammer Curls',
-        type: 'Resistances',
+        type: 'Resistance',
         duration: '35',
         date: '2022-01-17'
     },
     {
         user_id: '3',
         name: 'Running',
-        type: 'Carido',
+        type: 'Cardio',
         duration: '90',
         date: '2022-01-17'
     },
     {
         user_id: '3',
         name: 'Bench Press',
-        type: 'Resistances',
+        type: 'Resistance',
         duration: '90',
         date: '2022-01-17'
     },
     {
         user_id: '3',
         name: 'Push Up',
-        type: 'Carido',
+        type: 'Cardio',
         duration: '15',
         date: '2022-01-17'
     },
@@ -67,49 +67,49 @@ const exercisedata = [{
     {
         user_id: '1',
         name: 'Bench Press',
-        type: 'Resistances',
+        type: 'Resistance',
         duration: '30',
         date: '2022-01-18'
     },
     {
         user_id: '2',
         name: 'Bench Press',
-        type: 'Resistances',
+        type: 'Resistance',
         duration: '45',
         date: '2022-01-18'
     },
     {
         user_id: '2',
         name: 'Dumbbell Curls',
-        type: 'Resistances',
+        type: 'Resistance',
         duration: '25',
         date: '2022-01-18'
     },
     {
         user_id: '2',
         name: 'Hammer Curls',
-        type: 'Resistances',
+        type: 'Resistance',
         duration: '35',
         date: '2022-01-18'
     },
     {
         user_id: '3',
         name: 'Running',
-        type: 'Carido',
+        type: 'Cardio',
         duration: '90',
         date: '2022-01-18'
     },
     {
         user_id: '3',
         name: 'Bench Press',
-        type: 'Resistances',
+        type: 'Resistance',
         duration: '90',
         date: '2022-01-18'
     },
     {
         user_id: '3',
         name: 'Push Up',
-        type: 'Carido',
+        type: 'Cardio',
         duration: '15',
         date: '2022-01-18'
     },
@@ -123,49 +123,49 @@ const exercisedata = [{
     {
         user_id: '1',
         name: 'Bench Press',
-        type: 'Resistances',
+        type: 'Resistance',
         duration: '30',
         date: '2022-01-19'
     },
     {
         user_id: '2',
         name: 'Bench Press',
-        type: 'Resistances',
+        type: 'Resistance',
         duration: '45',
         date: '2022-01-19'
     },
     {
         user_id: '2',
         name: 'Dumbbell Curls',
-        type: 'Resistances',
+        type: 'Resistance',
         duration: '25',
         date: '2022-01-19'
     },
     {
         user_id: '2',
         name: 'Hammer Curls',
-        type: 'Resistances',
+        type: 'Resistance',
         duration: '35',
         date: '2022-01-19'
     },
     {
         user_id: '3',
         name: 'Running',
-        type: 'Carido',
+        type: 'Cardio',
         duration: '90',
         date: '2022-01-19'
     },
     {
         user_id: '3',
         name: 'Bench Press',
-        type: 'Resistances',
+        type: 'Resistance',
         duration: '90',
         date: '2022-01-19'
     },
     {
         user_id: '3',
         name: 'Push Up',
-        type: 'Carido',
+        type: 'Cardio',
         duration: '15',
         date: '2022-01-19'
     }
