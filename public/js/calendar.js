@@ -93,7 +93,7 @@ dark_mode_toggle.onclick = () => {
 }
 
 // Allows you to click on the calendar to select the date
-getDate = async(e) => {
+getDate = (e) => {
     var date = $(e.target).text().trim();
     var month = month_names.indexOf($('#month-picker').text().trim());
     var year = $('#year').text().trim();
@@ -107,7 +107,7 @@ getDate = async(e) => {
 // Get all exercise related to the date and user_id
 function getExercise(date) {
     // Call /exercise/:date the GET route to get the data from the database
-    fetch(`/exercise/${date}`, {
+    fetch(`/api/exercise/getExercise/${date}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
     }).then(responses => {
@@ -137,31 +137,47 @@ function renderActivity(data, date) {
     activity.append(dateEl, activityEl);
     var tableEl = document.createElement('table');
     tableEl.className = "table table-secondary table-hover table-bordered"
-    tableEl.innerHTML = "<thead> <tr> <th scope='col'>Name</th> <th scope='col'>Type</th> <th scope='col'>duration</th> </thead>";
+    tableEl.innerHTML = "<thead> <tr> <th scope='col'>Name</th> <th scope='col'>Type</th> <th scope='col'>duration</th> <th scope='col'>Action</th></tr> </thead>";
     var tbodyEl = document.createElement('tbody');
     for (x in data) {
         var trEl = document.createElement('tr');
+        trEl.setAttribute('data-id', data[x].id);
+        trEl.className = "exerciseData";
         var exerciseNameEl = document.createElement('td');
+        exerciseNameEl.className = "exerName";
+        exerciseNameEl.setAttribute("data-name", data[x].name);
         exerciseNameEl.textContent = data[x].name;
         var exerciseTypeEl = document.createElement('td');
+        exerciseTypeEl.className = "exerType";
+        exerciseTypeEl.setAttribute("data-type", data[x].type);
         exerciseTypeEl.textContent = data[x].type;
         var duration = document.createElement('td');
+        duration.className = "exerDuration";
+        duration.setAttribute("data-duration", data[x].duration);
         duration.textContent = data[x].duration;
-        trEl.append(exerciseNameEl, exerciseTypeEl, duration);
+        var actionEl = document.createElement('td');
+        actionEl.className = "action";
+        actionEl.innerHTML = `<a class="edit" title="Edit"><i class="fas fa-edit fa-lg"></i></a>
+        <a class="delete" title="Delete"><i class="fas fa-trash fa-lg"></i></a>`
+        trEl.append(exerciseNameEl, exerciseTypeEl, duration, actionEl);
         tbodyEl.append(trEl);
     }
     tableEl.append(tbodyEl);
     var addButtonEl = document.createElement('button');
     addButtonEl.type = 'button';
-    addButtonEl.className = "btn btn-primary align-self-end";
-    addButtonEl.setAttribute("data-bs-toggle", "modal");
-    addButtonEl.setAttribute("data-bs-target", "#modal-trigger")
+    addButtonEl.className = "btn btn-primary mt-5";
+    addButtonEl.setAttribute("onclick", "addExercise()");
     addButtonEl.textContent = "Add Exercise"
     activity.append(tableEl, addButtonEl);
 }
 
 // Add Exercise to the database
 async function addExercise() {
+    $('#editActivity').attr('style','display:none;');
+    $('#addActivity').removeAttr('style');
+    $('#modal-trigger form')[0].reset();
+    // Show Modal
+    $('#modal-trigger').modal('show');
     // Get all data using DOM to get Exercise Name/Exercise Type/Duration & Date
     const name = document.querySelector('#exercise-name').value.trim();
     const type = document.querySelector('#exercise-type').value.trim();
@@ -182,6 +198,80 @@ async function addExercise() {
         })
         // if API call is ok
         if (response.ok) {
+            // Reset Form
+            $('#modal-trigger form')[0].reset();
+            // Hide the Modal
+            $('#modal-trigger').modal('hide');
+            // Render the data again to workout view
+            getExercise(date);
+        } else {
+            // Else alert error
+            alert(response.statusText);
+        }
+    }
+}
+
+// Delete Exercises from table & Database
+deleteExercise = async(e) => {
+    // Get all data using DOM to get Exercise Id & Date
+    var exerciseId = $(e.target).parents('.exerciseData').attr('data-id');
+    let date = $('#selectdate').attr('data-date');
+    if(exerciseId) {
+         // call /api/exercise/ the POST route to create a new Exercise
+         const response = await fetch(`/api/exercise/${exerciseId}`, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' }
+        })
+        // if API call is ok
+        if (response.ok) {
+            // Render the data again to workout view
+            getExercise(date);
+        } else {
+            // Else alert error
+            alert(response.statusText);
+        }
+    }
+}
+
+// Open Up Modal with selected Data, allow to modify and click 'save' to trigger saveExercise()
+editExercise = (e) => {
+    // Display Edit Modal with and values;
+    var exerciseName = $(e.target).parents('.action').siblings('.exerName').attr('data-name');
+    var exerciseType = $(e.target).parents('.action').siblings('.exerType').attr('data-type');
+    var exerciseDuration = $(e.target).parents('.action').siblings('.exerDuration').attr('data-duration');
+    var exerciseId = $(e.target).parents('.exerciseData').attr('data-id');
+    $('#editActivity').removeAttr('data-id');
+    $('#addActivity').attr('style','display:none;');
+    $('#editActivity').removeAttr('style');
+    $('#editActivity').attr('data-id', exerciseId);
+    $('#modal-trigger').modal('show');
+    $('#exercise-name').val(exerciseName);
+    $('#exercise-type').val(exerciseType);
+    $('#duration').val(exerciseDuration);
+}
+
+async function saveExercise() {
+    const name = document.querySelector('#exercise-name').value.trim();
+    const type = document.querySelector('#exercise-type').value.trim();
+    const duration = document.querySelector('#duration').value.trim();
+    const exerciseId = $('#editActivity').attr('data-id');
+    let date = $('#selectdate').attr('data-date');
+    // Check if they all selected data have values
+    if (name && type && duration && exerciseId) {
+        // call /api/exercise/ the POST route to create a new Exercise
+        const response = await fetch(`/api/exercise/${exerciseId}`, {
+            method: 'PUT',
+            body: JSON.stringify({
+                name,
+                type,
+                duration
+            }),
+            headers: { 'Content-Type': 'application/json' }
+        })
+        // if API call is ok
+        if (response.ok) {
+            // Reset Form
+            $('#modal-trigger form')[0].reset();
             // Hide the Modal
             $('#modal-trigger').modal('hide');
             // Render the data again to workout view
@@ -194,3 +284,5 @@ async function addExercise() {
 }
 
 $(document).on('click', '.calendar-day-hover', getDate);
+$(document).on('click', '.delete', deleteExercise);
+$(document).on('click', '.edit', editExercise);

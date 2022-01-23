@@ -38,13 +38,13 @@ router.get('/gym', (req, res) => {
 });
 
 // Workout Route
-router.get('/workout', (req, res) => {
+router.get('/workout', withAuth, (req, res) => {
     // Render workout view and pass parameter loggedIn & Picture
     res.render('workout', { loggedIn: req.session.loggedIn, picture: req.session.picture });
 });
 
 // Profile Route
-router.get('/profile', (req, res) => {
+router.get('/profile', withAuth, (req, res) => {
     // Render profile view and pass parameter loggedIn & Picture
     res.render('profile', { loggedIn: req.session.loggedIn, picture: req.session.picture })
 });
