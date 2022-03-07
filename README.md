@@ -3,7 +3,7 @@
 ## Description 
 
 A simple daily workout tracker thats logs multiple exercises in a workout on a given day limited by user id.
-This will allow cosumer to reach their fitness goals quicker when they track their workout progress.
+This will allow consumer to reach their fitness goals quicker when they track their workout progress.
 
 ### User Story
 
